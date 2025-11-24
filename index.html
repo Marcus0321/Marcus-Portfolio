@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="icon" type="image/png" href="ako.jpg">
+    <title>Marcus Mangubat - Graphic Designer\Developer</title>
+    <style>
+        :root {
+            --max-width: 1000px;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --font-sm: 0.85rem;
+            --font-base: 0.95rem;
+            --font-lg: 1.8rem;
+            --font-xl: 2.4rem;
+            --color-primary: #1a1a1a;
+            --color-bg: #ffffff;
+            --color-accent: #0066ff;
+            --color-text: #1a1a1a;
+            --color-text-light: #555;
+            --color-border: #e0e0e0;
+            --transition: all 0.3s ease;
+            --radius: 8px;
+        }
+
+        html.dark-mode {
+            --color-primary: #ffffff;
+            --color-bg: #1a1a1a;
+            --color-text: #ffffff;
+            --color-text-light: #bbbbbb;
+            --color-border: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            font-size: var(--font-base);
+            transition: var(--transition);
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            background: var(--color-bg);
+            border-bottom: 1px solid var(--color-border);
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-sm) 0;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--spacing-md);
+            list-style: none;
+            font-size: var(--font-sm);
+        }
+
+        .nav-links a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 1.5px solid var(--color-text);
+            color: var(--color-text);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .theme-toggle:hover {
+            background: var(--color-accent);
+            color: var(--color-bg);
+            border-color: var(--color-accent);
+        }
+
+        /* Hero + About Combined */
+        .hero-about {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: var(--spacing-lg);
+            align-items: center;
+            padding: var(--spacing-lg) 0;
+            min-height: 70vh;
+        }
+
+        .profile-img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--color-accent);
+            box-shadow: 0 8px 20px rgba(0, 102, 255, 0.2);
+            justify-self: center;
+        }
+
+        .hero-content h1 {
+            font-size: var(--font-xl);
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.2;
+        }
+
+        .hero-content .tagline {
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-md);
+            font-size: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1.2rem;
+            border: 1.5px solid var(--color-text);
+            background: transparent;
+            color: var(--color-text);
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 102, 255, 0.3);
+        }
+
+        .btn+.btn {
+            margin-left: var(--spacing-sm);
+        }
+
+        .about-text {
+            margin-top: var(--spacing-md);
+            color: var(--color-text-light);
+            font-size: var(--font-sm);
+        }
+
+        .inspiration {
+            margin-top: var(--spacing-md);
+            padding: var(--spacing-sm);
+            background: var(--color-bg);
+            border-left: 3px solid var(--color-accent);
+            font-style: italic;
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Sections */
+        section {
+            padding: var(--spacing-lg) 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: var(--font-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        /* Portfolio */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .portfolio-item {
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 102, 255, 0.15);
+        }
+
+        .portfolio-image {
+            height: 160px;
+            background: linear-gradient(135deg, var(--color-accent), #00d4aa);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: var(--font-lg);
+            margin-bottom: var(--spacing-xl);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        section h2 .gradient-text {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        section h4,
+        p .gradient-text {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+
+        .portfolio-info {
+            padding: var(--spacing-sm);
+        }
+
+        .portfolio-info h4 {
+            margin-bottom: 0.25rem;
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .portfolio-item:hover .portfolio-image {
+            transform: scale(1.08);
+        }
+
+        .tool-badge {
+            display: inline-block;
+            background: var(--color-border);
+            padding: 0.2rem 0.5rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            margin-right: 0.3rem;
+            margin-top: 0.4rem;
+        }
+
+        .view-all-btn {
+            display: block;
+            margin: var(--spacing-lg) auto 0;
+            text-align: center;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .skill-category h4 {
+            color: var(--color-accent);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .skill-item {
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            padding: 0.3rem 0.7rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .testimonial-card {
+            padding: var(--spacing-md);
+            background: var(--color-bg);
+            border-left: 3px solid var(--color-accent);
+            border-radius: var(--radius);
+            font-size: 0.9rem;
+        }
+
+        .hero-content h1 .gradient-text {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            color: var(--color-text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        /* Contact */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 0.5rem;
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            background: var(--color-bg);
+            color: var(--color-text);
+            font-size: 0.9rem;
+        }
+
+        .contact-info {
+            font-size: 0.9rem;
+        }
+
+        .contact-item h4 {
+            color: var(--color-accent);
+            margin-bottom: 0.4rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.6rem;
+            margin-top: 0.5rem;
+        }
+
+        .social-links a {
+            width: 36px;
+            height: 36px;
+            border: 1.5px solid var(--color-text);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text);
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--color-accent);
+            color: white;
+            border-color: var(--color-accent);
+        }
+
+        /*services*/
+
+        .services-showcase {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .services-intro {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+            color: var(--color-text-light);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .service-card {
+            background: var(--color-bg);
+            border: 1.5px solid var(--color-border);
+            border-radius: var(--radius);
+            padding: var(--spacing-lg);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-accent), #00d4aa);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0, 102, 255, 0.15);
+            border-color: var(--color-accent);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+            background: linear-gradient(135deg, var(--color-accent), #00d4aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-text);
+        }
+
+        .service-card p {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--color-accent);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .service-features {
+            text-align: left;
+            margin-top: var(--spacing-md);
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+        }
+
+        .service-features li {
+            margin-bottom: 0.4rem;
+            position: relative;
+            padding-left: 1.4rem;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            color: var(--color-accent);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Enhanced Project Modal Styles */
+        .enhanced-project-modal {
+            max-width: 1100px;
+            width: 92%;
+            max-height: 92vh;
+            overflow-y: auto;
+            background: var(--color-bg);
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: modalPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            border: 1px solid var(--color-border);
+        }
+
+        .modal-header {
+            text-align: center;
+            padding: 1.5rem 1rem 1rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .modal-grid {
+            padding: var(--spacing-lg);
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .modal-project-item {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+        }
+
+        .modal-project-item:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0, 102, 255, 0.2);
+        }
+
+        .project-image-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(4px);
+        }
+
+        .project-image-wrapper:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .view-text {
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 0.8rem 1.5rem;
+            background: var(--color-accent);
+            border-radius: 50px;
+            transform: translateY(20px);
+            transition: transform 0.4s ease;
+        }
+
+        .project-image-wrapper:hover .view-text {
+            transform: translateY(0);
+        }
+
+        .tool-badges {
+            margin-top: 0.6rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .coming-soon .portfolio-info h4::after {
+            font-size: 0.7rem;
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        /* Smooth scrollbar for modal */
+        .enhanced-project-modal::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .enhanced-project-modal::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .enhanced-project-modal::-webkit-scrollbar-thumb {
+            background: var(--color-border);
+            border-radius: 4px;
+        }
+
+        /* Animation */
+        @keyframes modalPop {
+            0% {
+                opacity: 0;
+                transform: scale(0.8) translateY(50px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--color-bg);
+            padding: var(--spacing-md);
+            border-radius: var(--radius);
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+
+        .modal-content {
+            overscroll-behavior: contain;
+        }
+
+        /* Smooth entrance animation */
+        .modal.active .modal-content {
+            animation: modalPop 0.4s ease-out;
+        }
+
+        @keyframes modalPop {
+            0% {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--color-text);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: var(--spacing-md) 0;
+            font-size: 0.8rem;
+            color: var(--color-text-light);
+            border-top: 1px solid var(--color-border);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            :root {
+                --font-xl: 2rem;
+                --font-lg: 1.6rem;
+            }
+
+            .hero-about {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: var(--spacing-md) 0;
+            }
+
+            .profile-img {
+                max-width: 180px;
+                margin: 0 auto;
+            }
+
+            .hero-content h1 {
+                font-size: 1.9rem;
+            }
+
+            .btn+.btn {
+                margin-left: 0;
+                margin-top: var(--spacing-sm);
+            }
+
+            .contact-wrapper,
+            .portfolio-grid,
+            .testimonials-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .fade-in-up-delay {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav class="fade-in-up-delay">
+                <div class="logo gradient-text fade-in-up-delay">My Portfolio</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#portfolio">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#certificates">Certificates</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><button class="theme-toggle" onclick="toggleTheme()">Dark</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Hero + About Combined -->
+        <section id="home" class="hero-about fade-in-up-delay">
+            <div>
+                <img src="ako.jpg" alt="Marcus Mangubat" class="profile-img" />
+            </div>
+            <div class="hero-content fade-in-up-delay">
+                <strong>
+                    <h1><span class="gradient-text fade-in-up-delay">Marcus Mangubat</span></h1>
+                </strong>
+                <strong>
+                    <h1>Graphic <span class="gradient-text fade-in-up-delay"> Designer & Developer</span></h1>
+                </strong>
+                <p class="tagline fade-in-up-delay">Dedicated to clean and elegant design, excellent usability, and the
+                    powerful combination of creativity and technology.</p>
+
+                <div style="margin-top: var(--spacing-lg);">
+                    <button class="btn btn-primary fade-in-up-delay" onclick="scrollToSection('portfolio')">View My
+                        Work</button>
+                    <button class="btn fade-in-up-delay" onclick="openVideoModal()">Watch Intro</button>
+                </div>
+        </section>
+
+        <section id="about" style="padding: var(--spacing-lg) 0;">
+            <strong>
+                <h2>About <span class="gradient-text">Me</span></h2>
+            </strong>
+
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;" class="fade-in-up-delay">
+                <p
+                    style="font-size: 1.05rem; color: var(--color-text-light); line-height: 1.8; margin-bottom: var(--spacing-md);">
+                    I’m Marcus Mangubat, a 3rd-year BS Information Technology student at City College of Calamba.
+                    I’m known for being highly disciplined, ambitious, and excellent at time management, always
+                    delivering quality work
+                    while balancing academics and personal projects. What drives me the most is my passion for
+                    continuous growth —
+                    I’m constantly learning new skills, tools, and technologies to evolve both creatively and
+                    technically.
+                    I love turning ideas into beautiful, functional digital products that solve real problems.
+                </p>
+
+                <p
+                    style="font-size: 1.05rem; color: var(--color-text-light); line-height: 1.8; margin-bottom: var(--spacing-md);">
+                    As a designer-developer, I bring together strong creative and technical abilities. In design, I’m
+                    skilled in graphic design,
+                    Adobe Photoshop, Canva (especially for branding kits, social media, and presentations), and Figma
+                    for UI/UX design,
+                    wireframing, and prototyping. On the development side, I’m proficient in HTML, CSS, JavaScript, PHP,
+                    MySQL,
+                    and database management, enabling me to build responsive, full-stack web solutions from scratch.
+                    I’m eager to apply this unique blend of skills in internships, freelance projects, or full-time
+                    roles
+                    where I can keep learning, contribute meaningfully, and grow alongside a talented team.
+                </p>
+
+                <div class="inspiration" style="text-align: left; max-width: 600px; margin: 2rem auto;">
+                    <strong>Joe Sparano ~</strong> Good design is obvious. Great design is transparent.
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio -->
+        <section id="portfolio">
+            <strong>
+                <h2>Pro<span class="gradient-text">jects</span></h2>
+            </strong>
+            <div class="portfolio-grid">
+                <!-- Project 1 -->
+                <div class="portfolio-item fade-in-up-delay">
+                    <a href="https://dentalshyne-toothcare.iceiy.com/"><img src="img/dental.png"
+                            alt="Tech Startup Branding" class="portfolio-image" loading="lazy"></a>
+                    <div class="portfolio-info">
+                        <strong>
+                            <h4>Appointment <span class="gradient-text">Scheduling System</h4></span>
+                        </strong>
+                        <p><span class="gradient-text">Complete Appointment Scheduling </span>and Patient Management
+                            System</p>
+                        <div>
+                            <span class="tool-badge">Html</span>
+                            <span class="tool-badge">Css</span>
+                            <span class="tool-badge">JavaScript</span>
+                            <span class="tool-badge">Php</span>
+                            <span class="tool-badge">MySQL</span>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="portfolio-item fade-in-up-delay">
+                    <img src="img/drawing.jpg" alt="watermelon" class="portfolio-image" loading="lazy">
+                    <div class="portfolio-info">
+                        <strong>
+                            <h4> <span class="gradient-text"></span>My Watermelon Drawing</h4></span>
+                        </strong>
+                        <p>My vibrant sliced <span class="gradient-text">watermelon drawing artwork</p></span>
+                        <div>
+                            <span class="tool-badge">Pencil</span>
+                            <span class="tool-badge">Paper</span>
+                            <span class="tool-badge">Crayon</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="portfolio-item fade-in-up-delay">
+                    <img src="img/1.png" alt="watermelon" class="portfolio-image" loading="lazy">
+                    <div class="portfolio-info">
+                        <strong>
+                            <h4>My <span class="gradient-text"></span>Typography Layout Practice</h4></span>
+                        </strong>
+                        <p>Futuristic tech-themed <span class="gradient-text"> stay updated poster.</p></span>
+                        <div>
+                            <span class="tool-badge">Canva</span>
+                            <span class="tool-badge">Photoshop</span>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary view-all-btn fade-in-up-delay" onclick="openAllProjectsModal()">
+                View All Projects
+            </button>
+        </section>
+        <!-- Skills -->
+        <section id="skills">
+            <strong>
+                <h2>My <span class="gradient-text">Skills</span></h2>
+            </strong>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <strong>
+                        <h4>Design</h4>
+                    </strong>
+                    <div class="skills-list">
+                        <span class="skill-item">Photoshop</span>
+                        <span class="skill-item">Illustrator</span>
+                        <span class="skill-item">Figma</span>
+                        <span class="skill-item">Canva</span>
+                        <span class="skill-item">Adobe XD</span>
+                        <span class="skill-item">Sketch</span>
+                        <span class="skill-item">LucidChart</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <strong>
+                        <h4>Development</h4>
+                    </strong>
+                    <div class="skills-list">
+                        <span class="skill-item">HTML5</span>
+                        <span class="skill-item">CSS3</span>
+                        <span class="skill-item">JavaScript</span>
+                        <span class="skill-item">PHP</span>
+                        <span class="skill-item">MYSQL</span>
+                        <span class="skill-item">DATABASE</span>
+                        <span class="skill-item">C++</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <strong>
+                        <h4>Soft Skills</h4>
+                    </strong>
+                    <div class="skills-list">
+                        <span class="skill-item">Creativity</span>
+                        <span class="skill-item">Teamwork</span>
+                        <span class="skill-item">Problem Solving</span>
+                        <span class="skill-item">Time Management</span>
+                        <span class="skill-item">Communication</span>
+                        <span class="skill-item">Critical Thinking</span>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: var(--spacing-lg);">
+                <button class="btn btn-primary">
+                    <a href="marcus.pdf" download>Download Resume </a>
+                </button>
+            </div>
+        </section>
+
+        <!-- CERTIFICATES SECTION -->
+        <section id="certificates" style="padding: var(--spacing-lg) 0;">
+            <div class="container">
+                <strong>
+                    <h2>Certifi<span class="gradient-text">cates</span></h2>
+                </strong>
+                <!-- Main Grid – shows only 3 items -->
+                <div class="portfolio-grid certificates-grid">
+                    <!-- Certificate 1 -->
+                    <div class="portfolio-item fade-in-up-delay">
+                        <img src="cert/1.png" alt="Certificate 1" class="portfolio-image" loading="lazy">
+                        <div class="portfolio-info">
+                            <h4><span class="gradient-text">Introduction to Entrepreneurship</span></h4>
+                            <p>Wadhwani Foundation - 2024</p>
+                        </div>
+                    </div>
+                    <!-- Certificate 2 -->
+                    <div class="portfolio-item fade-in-up-delay">
+                        <img src="cert/2.png" alt="Certificate 2" class="portfolio-image" loading="lazy">
+                        <div class="portfolio-info">
+                            <h4><span class="gradient-text">Intrepersonal Skills</span></h4>
+                            <p>Wadhwani Foundation - 2024</p>
+                        </div>
+                    </div>
+                    <!-- Certificate 3 -->
+                    <div class="portfolio-item fade-in-up-delay">
+                        <img src="cert/3.png" alt="Certificate 3" class="portfolio-image" loading="lazy">
+                        <div class="portfolio-info">
+                            <h4><span class="gradient-text">Effective Speaking and Listening Skills</span></h4>
+                            <p>Wadhwani Foundation - 2024</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: var(--spacing-lg);">
+                    <button class="btn btn-primary view-all-btn" onclick="openCertificatesModal()">
+                        View All Certificates
+                    </button>
+                </div>
+            </div>
+        </section>
+        <!-- ==================== CERTIFICATES MODAL ==================== -->
+        <div id="certificatesModal" class="modal">
+            <div class="modal-content enhanced-project-modal">
+                <button class="close-btn" onclick="closeCertificatesModal()">×</button>
+
+                <div class="modal-header">
+                    <h2>All <span class="gradient-text">Certificates</span></h2>
+                    <p style="color: var(--color-text-light); margin-top: 0.5rem; font-size: 0.95rem;">
+                        My completed courses, bootcamps and recognitions
+                    </p>
+                </div>
+                <div class="portfolio-grid modal-grid" style="padding: var(--spacing-lg);">
+                    <!-- ==== Add as many as you want below ==== -->
+                    <div class="portfolio-item modal-project-item">
+                        <div class="project-image-wrapper">
+                            <img src="cert/4.png" alt="Responsive Web Design" class="portfolio-image" loading="lazy">
+                            <div class="project-overlay">
+                                <a href="cert/4.png" target="_blank"><span class="view-text">View Full
+                                        ↑</span></a>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h4><span class="gradient-text">Self-Management</span></h4>
+                            <p>Wadhwani Foundation - 2024</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item modal-project-item">
+                        <div class="project-image-wrapper">
+                            <img src="cert/5.png" alt="JavaScript Algorithms" class="portfolio-image" loading="lazy">
+                            <div class="project-overlay">
+                                <a href="cert/5.png" target="_blank"><span class="view-text">View Full
+                                        ↑</span></a>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h4>Start-up Mindset</h4>
+                            <p>Wadhwani Foundation - 2024</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item modal-project-item">
+                        <div class="project-image-wrapper">
+                            <img src="cert/6.png" alt="UI/UX Design" class="portfolio-image" loading="lazy">
+                            <div class="project-overlay">
+                                <a href="cert/6.png" target="_blank"><span class="view-text">View Full
+                                        ↑</span></a>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h4>Impactful Writing Skills</h4>
+                            <p>Wadhwani Foundation - 2024</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item modal-project-item">
+                        <div class="project-image-wrapper">
+                            <img src="cert/7.png" alt="PHP & MySQL" class="portfolio-image" loading="lazy">
+                            <div class="project-overlay">
+                                <a href="cert/7.png" target="_blank"><span class="view-text">View Full
+                                        ↑</span></a>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h4>Self-Presentation</h4>
+                            <p>Wadhwani Foundation - 2024</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section id="services" class="services-showcase">
+            <strong>
+                <h2>What I <span class="gradient-text">Offer</span></h2>
+            </strong>
+            <p class="services-intro">
+                I deliver clean, modern, and functional digital solutions — combining creative design with solid
+                development.
+                Whether you need a stunning brand identity or a fully working web application, I’ve got you covered.
+            </p>
+            <div class="services-grid">
+                <!-- Service 1: UI/UX + Web Design -->
+                <div class="service-card">
+                    <div class="service-icon"><img src="img/ui.png" alt=""></div>
+                    <h3>UI/UX & Web Design</h3>
+                    <p>Beautiful, user-friendly designs crafted in Figma or built directly with code.</p>
+                    <ul class="service-features">
+                        <li>Custom website/mockup design</li>
+                        <li>Responsive & mobile-first</li>
+                        <li>Interactive prototypes</li>
+                        <li>Design system & style guide</li>
+                    </ul>
+                </div>
+                <!-- Service 2: Full-Stack Web Development -->
+                <div class="service-card">
+                    <div class="service-icon"><img src="img/full.png" alt=""></div><br><br><br>
+                    <h3>Full-Stack Web Development</h3>
+                    <p>Turn your idea into a fully functional website or web app.</p>
+                    <ul class="service-features">
+                        <li>HTML, CSS, JavaScript, PHP</li>
+                        <li>MySQL database integration</li>
+                        <li>Admin dashboards</li>
+                        <li>Appointment/Booking systems</li>
+                        <li>Deployment & hosting setup</li>
+                    </ul>
+                </div>
+                <!-- Service 3: Branding & Graphic Design -->
+                <div class="service-card">
+                    <div class="service-icon"><img src="img/gd.png" alt=""></div><br><br><br>
+                    <h3>Branding & Graphic Design</h3>
+                    <p>Complete visual identity packages and marketing materials.</p>
+                    <ul class="service-features">
+                        <li>Logo design + brand kit</li>
+                        <li>Social media graphics</li>
+                        <li>Posters, banners, flyers</li>
+                        <li>Business cards & letterheads</li>
+                        <li>Unlimited revisions</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: var(--spacing-lg);">
+                <button class="btn btn-primary" onclick="scrollToSection('contact')">
+                    Contact Me for Services
+                </button>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact">
+            <strong>
+                <h2>Get in <span class="gradient-text">Touch</span></h2>
+            </strong>
+            <div class="contact-wrapper">
+                <form class="contact-form" onsubmit="handleFormSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Name*</label>
+                        <input type="text" id="name" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email*</label>
+                        <input type="email" id="email" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message*</label>
+                        <textarea id="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h4>Email*</h4>
+                        <p>mangubatmarcus@gmail.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>Phone*</h4>
+                        <p>+63 930 944 4418</p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>Follow me!</h4>
+                        <div class="social-links">
+                            <a href="https://www.facebook.com/marcusmngbt" target="_self" title="Facebook">f</a>
+                            <a href="https://www.instagram.com/marcusmngbt/" title="Instagram">IG</a>
+                            <a href="linkedin.com/in/marcus-mangubat-80040536a" title="LinkedIn">in</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Video Modal -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeVideoModal()">×</button>
+            <h3>About Me</h3>
+            <video controls style="width: 100%; border-radius: 6px; margin-top: 0.5rem;">
+                <source src="video.mp4" type="video/mp4" />
+            </video>
+        </div>
+    </div>
+    <section>
+        <!-- Enhanced All Projects Modal -->
+        <div id="allProjectsModal" class="modal">
+            <div class="modal-content enhanced-project-modal">
+                <button class="close-btn" onclick="closeAllProjectsModal()">×</button>
+
+                <div class="modal-header">
+                    <h2>All <span class="gradient-text">Projects</span></h2>
+                    <p style="color: var(--color-text-light); margin-top: 0.5rem; font-size: 0.95rem;">
+                        A collection of my design & development work
+                    </p>
+                </div>
+                <div class="portfolio-grid modal-grid">
+                    <!-- Project 1 -->
+                    <div class="portfolio-item modal-project-item">
+                        <a href="https://dentalshyne-toothcare.iceiy.com/" target="_blank" class="project-link">
+                            <div class="project-image-wrapper">
+                                <img src="img/dental.png" alt="Appointment Scheduling System" class="portfolio-image"
+                                    loading="lazy">
+                                <div class="project-overlay">
+                                    <span class="view-text">View Live →</span>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="portfolio-info">
+                            <h4>Appointment <span class="gradient-text">Scheduling System</span></h4>
+                            <p>Full-stack patient management & booking platform</p>
+                            <div class="tool-badges">
+                                <span class="tool-badge">HTML</span>
+                                <span class="tool-badge">CSS</span>
+                                <span class="tool-badge">JavaScript</span>
+                                <span class="tool-badge">PHP</span>
+                                <span class="tool-badge">MySQL</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="portfolio-item modal-project-item">
+                        <div class="project-image-wrapper">
+                            <img src="img/drawing.jpg" alt="Watermelon Drawing" class="portfolio-image" loading="lazy">
+                            <div class="project-overlay">
+                                <a href="img/drawing.jpg"><span class="view-text">View Artwork</span></a>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h4><span class="gradient-text">Watermelon</span> Realism Drawing</h4>
+                            <p>Hand-drawn with pencil & crayons</p>
+                            <div class="tool-badges">
+                                <span class="tool-badge">Pencil</span>
+                                <span class="tool-badge">Crayons</span>
+                                <span class="tool-badge">Paper</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="text-align: center; margin-top: 2rem; padding: 1rem;">
+                        <p style="color: var(--color-text-light); font-size: 0.9rem;">
+                            Typograhy Activity
+                        </p>
+                    </div>
+                    <!-- Project 3 -->
+                    <div class="portfolio-item modal-project-item">
+                        <div class="project-image-wrapper">
+                            <img src="img/1.png" alt="Typography Poster" class="portfolio-image" loading="lazy">
+                            <div class="project-overlay">
+                                <a href="img/1.png"><span class="view-text">View Design</span></a>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h4>Futuristic <span class="gradient-text">Typography</span> Poster</h4>
+                            <p>Tech-themed layout practice in Canva & Photoshop</p>
+                            <div class="tool-badges">
+                                <span class="tool-badge">Canva</span>
+                                <span class="tool-badge">Photoshop</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item modal-project-item coming-soon">
+                        <div class="project-image-wrapper">
+                            <img src="img/2.png" class="portfolio-image">
+                            <div class="project-overlay">
+                                <a href="img/2.png"><span class="view-text">Font Classification Showcase</span></a>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h4><span class="gradient-text">Font Classification</span> Showcase</h4>
+                            <p>Brief classification of fonts and its usage</p>
+                            <div class="tool-badges">
+                                <span class="tool-badge">Canva</span>
+                                <span class="tool-badge">Photoshop</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item modal-project-item coming-soon">
+                        <div class="project-image-wrapper">
+                            <img src="img/3.jpg" class="portfolio-image">
+                            <div class="project-overlay">
+                                <a href="img/3.jpg"><span class="view-text">Typhogragic Adjustent Practice</span></a>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h4><span class="gradient-text">Font Classification</span> Showcase</h4>
+                            <p>Brief classification of using spacing</p>
+                            <div class="tool-badges">
+                                <span class="tool-badge">Canva</span>
+                                <span class="tool-badge">Photoshop</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="text-align: center; margin-top: 2rem; padding: 1rem;">
+                        <p style="color: var(--color-text-light); font-size: 0.9rem;">
+                            Brand Design Vision Threads
+                        </p>
+                    </div>
+                    <div class="portfolio-item modal-project-item coming-soon">
+                        <div class="project-image-wrapper">
+                            <img src="img/Logo (1).jpg" class="portfolio-image">
+                            <div class="project-overlay">
+                                <a href="img/Logo (1).jpg"><span class="view-text">Logo</span></a>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h4><span class="gradient-text">Vision Threads</span> Logo</h4>
+                            <p>A geometric multi-layered starburst featuring a central illustrated eye.</p>
+                            <div class="tool-badges">
+                                <span class="tool-badge">Canva</span>
+                                <span class="tool-badge">Photoshop</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item modal-project-item coming-soon">
+                        <div class="project-image-wrapper">
+                            <img src="img/Badge Logo.jpg" class="portfolio-image">
+                            <div class="project-overlay">
+                                <a href="img/Badge Logo.jpg"><span class="view-text">Badge Logo</span></a>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h4><span class="gradient-text">Vision Threads Badge</span> Logo</h4>
+                            <p>Overlapping starburst eye graphic centered over repeated background text.</p>
+                            <div class="tool-badges">
+                                <span class="tool-badge">Canva</span>
+                                <span class="tool-badge">Photoshop</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item modal-project-item coming-soon">
+                        <div class="project-image-wrapper">
+                            <img src="img/Horizontal 1 Logo.jpg" class="portfolio-image">
+                            <div class="project-overlay">
+                                <a href="img/Horizontal 1 Logo.jpg"><span class="view-text">Horizontal </span></a>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h4><span class="gradient-text">Vision Threads</span> Horizontal Logo</h4>
+                            <p>Elongated “VISION THREADS” layout with the eye symbol on the left.</p>
+                            <div class="tool-badges">
+                                <span class="tool-badge">Canva</span>
+                                <span class="tool-badge">Photoshop</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item modal-project-item coming-soon">
+                        <div class="project-image-wrapper">
+                            <img src="img/Vertical Logo.jpg" class="portfolio-image">
+                            <div class="project-overlay">
+                                <a href="img/Vertical Logo.jpg"><span class="view-text">Vertical Logo </span></a>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h4><span class="gradient-text">Vision Threads Vertical</span> Logo</h4>
+                            <p>Starburst eye graphic above stacked “VISION THREADS” typography.</p>
+                            <div class="tool-badges">
+                                <span class="tool-badge">Canva</span>
+                                <span class="tool-badge">Photoshop</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item modal-project-item coming-soon">
+                        <div class="project-image-wrapper">
+                            <img src="img/all-logo.png" class="portfolio-image">
+                            <div class="project-overlay">
+                                <a href="img/all-logo.png"><span class="view-text">All Logo </span></a>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h4><span class="gradient-text">Vision Threads All</span> Logo</h4>
+                            <p>A full visula design of Vision Threads Logo</p>
+                            <div class="tool-badges">
+                                <span class="tool-badge">Canva</span>
+                                <span class="tool-badge">Photoshop</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item modal-project-item coming-soon">
+                        <div class="project-image-wrapper">
+                            <img src="img/mood-board.png" class="portfolio-image">
+                            <div class="project-overlay">
+                                <a href="img/mood-board.png"><span class="view-text">Mood Board</span></a>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h4><span class="gradient-text">Brand Specification </span>I've used</h4>
+                            <p>A full visula design of Vision Threads Mood Board and Brand Specification</p>
+                            <div class="tool-badges">
+                                <span class="tool-badge">Canva</span>
+                                <span class="tool-badge">Photoshop</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="text-align: center; margin-top: 2rem; padding: 1rem;">
+                        <p style="color: var(--color-text-light); font-size: 0.9rem;">
+                            Digital Marketing Graphics
+                        </p>
+                    </div>
+
+                    <div class="portfolio-item modal-project-item coming-soon">
+                        <div class="project-image-wrapper">
+                            <img src="img/Banner Ad  (1).jpg" class="portfolio-image">
+                            <div class="project-overlay">
+                                <a href="img/Banner Ad  (1).jpg"><span class="view-text">Banner Ad </span></a>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h4><span class="gradient-text">Banner</span> Ad</h4>
+                            <p>A bright, inviting layout showcasing the Pumpkin Spice Latte with a bold 50% off tag.</p>
+                            <div class="tool-badges">
+                                <span class="tool-badge">Canva</span>
+                                <span class="tool-badge">Photoshop</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item modal-project-item coming-soon">
+                        <div class="project-image-wrapper">
+                            <img src="img/Landing Page Banner  (1).jpg" class="portfolio-image">
+                            <div class="project-overlay">
+                                <a href="img/Landing Page Banner  (1).jpg"><span class="view-text">Landing Page Banner
+                                    </span></a>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h4><span class="gradient-text">Landing Page</span> Banner</h4>
+                            <p>A rustic wooden background with droplets highlighting the Pumpkin Spice Latte and a warm
+                                call to try it.</p>
+                            <div class="tool-badges">
+                                <span class="tool-badge">Canva</span>
+                                <span class="tool-badge">Photoshop</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item modal-project-item coming-soon">
+                        <div class="project-image-wrapper">
+                            <img src="img/Newsletter Banner  (1).jpg" class="portfolio-image">
+                            <div class="project-overlay">
+                                <a href="img/Newsletter Banner  (1).jpg"><span class="view-text">Newsletter Banner
+                                    </span></a>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h4><span class="gradient-text">Newsletter</span> Banner</h4>
+                            <p>A minimal rainy-season design announcing Brew Haven’s upcoming opening with a
+                                buy-one-get-one promo.</p>
+                            <div class="tool-badges">
+                                <span class="tool-badge">Canva</span>
+                                <span class="tool-badge">Photoshop</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item modal-project-item coming-soon">
+                        <div class="project-image-wrapper">
+                            <img src="img/Social Media Post  (2).jpg" class="portfolio-image">
+                            <div class="project-overlay">
+                                <a href="img/Social Media Post  (2).jpg"><span class="view-text">Social Media Post
+                                    </span></a>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h4><span class="gradient-text">Social Media</span> Post</h4>
+                            <p>A rustic wooden background with droplets highlighting the Pumpkin Spice Latte and a warm
+                                call to try it.</p>
+                            <div class="tool-badges">
+                                <span class="tool-badge">Canva</span>
+                                <span class="tool-badge">Photoshop</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <p>© 2025 Marcus Mangubat. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const profileImg = document.querySelector('.profile-img');
+
+        // Add smooth fade animation
+        profileImg.style.transition = 'opacity 0.4s ease';
+
+        // Function to change image with fade effect
+        function changeProfileImage(newSrc) {
+            profileImg.style.opacity = '0'; // Fade out
+
+            setTimeout(() => {
+                profileImg.src = newSrc;
+                profileImg.style.opacity = '1'; // Fade in
+            }, 200); // Wait for fade-out to complete halfway
+        }
+
+        // Theme Toggle with Animated Image Swap
+        function toggleTheme() {
+            const html = document.documentElement;
+            const btn = document.querySelector('.theme-toggle');
+
+            if (html.classList.contains('dark-mode')) {
+                // Switching to Light Mode
+                html.classList.remove('dark-mode');
+                btn.textContent = 'Dark';
+                changeProfileImage('ako.jpg');                  // ← Animated!
+                localStorage.setItem('theme', 'light');
+            } else {
+                // Switching to Dark Mode
+                html.classList.add('dark-mode');
+                btn.textContent = 'Light';
+                changeProfileImage('ako-dark.png');             // ← Animated!
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        function openAllProjectsModal() {
+            document.getElementById('allProjectsModal').classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scroll
+        }
+
+        function closeAllProjectsModal() {
+            document.getElementById('allProjectsModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside the content
+        document.getElementById('allProjectsModal').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeAllProjectsModal();
+            }
+        });
+
+        // On page load: Apply saved theme + correct image (with animation on first load too!)
+        window.addEventListener('DOMContentLoaded', () => {
+            const theme = localStorage.getItem('theme') || 'light';
+            const btn = document.querySelector('.theme-toggle');
+
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark-mode');
+                btn.textContent = 'Light';
+                profileImg.style.opacity = '0';
+                setTimeout(() => {
+                    profileImg.src = 'ako-dark.png';
+                    profileImg.style.opacity = '1';
+                }, 100);
+            } else {
+                profileImg.src = 'ako.jpg';
+            }
+        });
+
+        // === Your other functions stay exactly the same ===
+        function openVideoModal() {
+            document.getElementById('videoModal').classList.add('active');
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('videoModal');
+            modal.classList.remove('active');
+            modal.querySelector('video').pause();
+        }
+
+        document.addEventListener('click', (e) => {
+            const modal = document.getElementById('videoModal');
+            if (e.target === modal) closeVideoModal();
+        });
+
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            alert('Message sent! I’ll get back to you soon.');
+            e.target.reset();
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(a.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Certificates Modal Functions
+        function openCertificatesModal() {
+            document.getElementById('certificatesModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCertificatesModal() {
+            document.getElementById('certificatesModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside the content
+        document.getElementById('certificatesModal').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeCertificatesModal();
+            }
+        });
+    </script>
+</body>
+
+</html>
